@@ -8,6 +8,13 @@
     <fragment
         android:id="@+id/rootFragment"
         android:name="by.valtorn.luchparser.ui.root.ui.RootFragment"
-        android:label="fragment_root"
-        tools:layout="@layout/fragment_root" />
+        tools:layout="@layout/fragment_root">
+        <action
+            android:id="@+id/toResultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="by.valtorn.luchparser.ui.result.ui.ResultFragment"
+        tools:layout="@layout/fragment_result" />
 </navigation>
