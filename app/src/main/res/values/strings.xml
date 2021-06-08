@@ -2,9 +2,9 @@
     <string name="app_name">LuchParser</string>
 
     <string name="modem_id">№%s</string>
-    <string name="modem_payload_power">Напряжение:\n%s мВ</string>
+    <string name="modem_payload_power">Напряжение:\n%s В</string>
     <string name="modem_payload_distance">Расстояние:\n%s мм</string>
-    <string name="modem_payload_temperature">Температура:\n%s С</string>
+    <string name="modem_payload_temperature">Температура:\n%s \u00B0C</string>
     <string name="modem_time">Время: %s</string>
 
     <string name="common_back">Назад</string>

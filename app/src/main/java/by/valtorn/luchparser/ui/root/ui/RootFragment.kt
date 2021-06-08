@@ -39,7 +39,7 @@ class RootFragment : Fragment(R.layout.fragment_root) {
             //frNumberText.setText("794B0007")
             frEnter.setOnClickListener {
                 if (!frNumberText.text.isNullOrBlank() && frNumberText.text.toString().length == 8) {
-                    viewModel.getModem(frNumberText.text.toString())
+                    viewModel.getModem(frNumberText.text.toString().toUpperCase())
                 } else {
                     frNumberText.error = getString(R.string.root_error_number)
                 }
