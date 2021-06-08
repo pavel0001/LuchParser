@@ -4,22 +4,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.valtorn.luchparser.network.NetworkService
-import by.valtorn.luchparser.network.model.Modem
+import by.valtorn.luchparser.network.model.Message
+import by.valtorn.luchparser.repository.MessagesRepository
 import kotlinx.coroutines.launch
 
 class RootVM : ViewModel() {
 
-    private val mModem = MutableLiveData<List<Modem>?>()
-    val modem: LiveData<List<Modem>?> = mModem
+    val messages = MessagesRepository.messages
+
+    private val mProgress = MutableLiveData(false)
+    val progress: LiveData<Boolean> = mProgress
 
     fun getModem(id: String) {
         viewModelScope.launch {
-            mModem.value = NetworkService.getModemData(id)
+            mProgress.value = true
+            MessagesRepository.getModem(id)
+            mProgress.value = false
         }
     }
 
-    fun clear(){
-        mModem.value = null
+    fun clear() {
+        MessagesRepository.clear()
     }
 }

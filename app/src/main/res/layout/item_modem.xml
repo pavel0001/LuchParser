@@ -3,38 +3,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginHorizontal="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp">
+
+    <TextView
+        android:id="@+id/im_time"
+        style="@style/LuchText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@id/im_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/modem_time" />
 
     <TextView
         android:id="@+id/im_id"
-        android:layout_width="match_parent"
+        style="@style/LuchText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/im_time"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/modem_id" />
 
     <TextView
-        android:id="@+id/im_payload"
-        android:layout_width="match_parent"
+        android:id="@+id/im_payload_power"
+        style="@style/LuchText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/im_payload_distance"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/im_id"
-        tools:text="@string/modem_payload" />
+        tools:text="@string/modem_payload_power" />
 
     <TextView
-        android:id="@+id/im_time"
-        android:layout_width="match_parent"
+        android:id="@+id/im_payload_distance"
+        style="@style/LuchText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/im_payload"
-        tools:text="@string/modem_time" />
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/im_payload_temperature"
+        app:layout_constraintStart_toEndOf="@id/im_payload_power"
+        app:layout_constraintTop_toBottomOf="@id/im_id"
+        tools:text="@string/modem_payload_distance" />
+
+    <TextView
+        android:id="@+id/im_payload_temperature"
+        style="@style/LuchText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/im_payload_distance"
+        app:layout_constraintTop_toBottomOf="@id/im_id"
+        tools:text="@string/modem_payload_temperature" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/im_time"
-        android:background="#232323"/>
+        android:background="?attr/colorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/im_payload_temperature" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

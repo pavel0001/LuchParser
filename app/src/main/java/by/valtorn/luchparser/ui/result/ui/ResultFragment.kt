@@ -19,7 +19,12 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
     private val binding by viewBinding(FragmentResultBinding::bind)
     private val viewModel by activityViewModels<RootVM>()
 
-    private val adapter = BaseRecyclerAdapter { _, _ ->
+    private val adapter = BaseRecyclerAdapter { item, _ ->
+        if (item is MessageItem) {
+            item.message.id?.let {
+                findNavController().navigate(ResultFragmentDirections.toDetails(it))
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,12 +48,12 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
             frRecycler.layoutManager = LinearLayoutManager(context)
             frRecycler.adapter = adapter
 
-            viewModel.modem.observe(viewLifecycleOwner) { modemList ->
+            viewModel.messages.observe(viewLifecycleOwner) { modemList ->
                 if (modemList == null) {
                     findNavController().popBackStack()
                 } else {
                     adapter.updateWithDiffUtils(modemList.map {
-                        ModemItem(activity, it)
+                        MessageItem(activity, it)
                     })
                 }
             }

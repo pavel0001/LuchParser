@@ -15,7 +15,7 @@ data class ApiData(
     val timePublished: String,
     val timeSaved: String
 ) {
-    fun toModem(): Modem {
-        return Modem(this.id.toString(), this.payload, this.timePublished)
+    fun toMessage(): Message {
+        return Message(this.id.toString(), this.decodedPayload, this.timePublished)
     }
 }

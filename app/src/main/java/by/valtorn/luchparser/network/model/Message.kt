@@ -1,7 +1,7 @@
 package by.valtorn.luchparser.network.model
 
-data class Modem(
-    val modemID: String?,
-    val payload: String?,
+data class Message(
+    val id: String?,
+    val decodedPayload: String?,
     val timePublished: String?
 )

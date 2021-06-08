@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">LuchParser</string>
 
-    <string name="modem_id">Id: %s</string>
-    <string name="modem_payload">Payload: %s</string>
-    <string name="modem_time">Time: %s</string>
+    <string name="modem_id">№%s</string>
+    <string name="modem_payload_power">Напряжение:\n%s мВ</string>
+    <string name="modem_payload_distance">Расстояние:\n%s мм</string>
+    <string name="modem_payload_temperature">Температура:\n%s С</string>
+    <string name="modem_time">Время: %s</string>
+
+    <string name="common_back">Назад</string>
+    <string name="root_hint_enter">Введите номер</string>
+    <string name="root_button_enter">Ввод</string>
+    <string name="root_message_empty">Ничего не найдено</string>
+    <string name="root_error_number">Некорректный номер</string>
 </resources>

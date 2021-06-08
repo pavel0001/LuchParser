@@ -16,5 +16,17 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="by.valtorn.luchparser.ui.result.ui.ResultFragment"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/toDetails"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="by.valtorn.luchparser.ui.details.ui.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="messageId"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.result.ui.ResultFragment">
+    tools:context=".ui.details.ui.DetailsFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fr_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:listitem="@layout/item_modem"
-        app:layout_constraintBottom_toTopOf="@id/fr_clear"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/fr_clear"
+    <TextView
+        android:id="@+id/fd_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/common_back"
         android:layout_marginHorizontal="8dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/fd_cancel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
+    <Button
+        android:id="@+id/fd_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:text="@string/common_back"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
