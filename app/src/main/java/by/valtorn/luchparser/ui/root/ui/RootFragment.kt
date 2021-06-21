@@ -15,6 +15,7 @@ import by.valtorn.luchparser.R
 import by.valtorn.luchparser.databinding.FragmentRootBinding
 import by.valtorn.luchparser.ui.root.vm.RootVM
 import by.valtorn.luchparser.utils.viewBinding
+import java.util.*
 
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -36,10 +37,9 @@ class RootFragment : Fragment(R.layout.fragment_root) {
 
     private fun initUI(activity: FragmentActivity) {
         with(binding) {
-            //frNumberText.setText("794B0007")
             frEnter.setOnClickListener {
                 if (!frNumberText.text.isNullOrBlank() && frNumberText.text.toString().length == 8) {
-                    viewModel.getModem(frNumberText.text.toString().toUpperCase())
+                    viewModel.getModem(frNumberText.text.toString().toUpperCase(Locale.getDefault()))
                 } else {
                     frNumberText.error = getString(R.string.root_error_number)
                 }
