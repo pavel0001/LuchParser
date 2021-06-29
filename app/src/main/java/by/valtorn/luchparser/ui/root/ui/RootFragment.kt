@@ -45,6 +45,7 @@ class RootFragment : Fragment(R.layout.fragment_root) {
                 }
                 activity.hideKeyboard(binding.root)
             }
+            frNumberText.setText("794B0007")
         }
     }
 
