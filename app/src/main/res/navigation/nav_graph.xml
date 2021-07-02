@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="by.valtorn.luchparser.ui.result.ui.ResultFragment"
+        android:name="by.valtorn.luchparser.ui.result.root.ui.ResultFragment"
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/toDetails"

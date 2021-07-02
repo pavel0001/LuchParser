@@ -1,4 +1,4 @@
-package by.valtorn.luchparser.ui.result.ui
+package by.valtorn.luchparser.ui.result.root.ui
 
 import android.content.Context
 import android.view.View

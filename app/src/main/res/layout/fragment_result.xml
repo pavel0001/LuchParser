@@ -4,22 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.result.ui.ResultFragment">
+    tools:context=".ui.result.root.ui.ResultFragment">
+
+    <TextView
+        android:id="@+id/fr_tables"
+        style="@style/LuchInfoButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/result_tables"
+        app:drawableStartCompat="@drawable/ic_tables"
+        app:layout_constraintEnd_toStartOf="@id/fr_charts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fr_charts"
+        style="@style/LuchInfoButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="8dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/result_charters"
+        app:drawableStartCompat="@drawable/ic_charts"
+        app:layout_constraintBottom_toBottomOf="@id/fr_tables"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fr_tables"
+        app:layout_constraintTop_toTopOf="@id/fr_tables" />
+
+    <View
+        android:id="@+id/fr_tables_indicator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/fr_tables"
+        app:layout_constraintStart_toStartOf="@id/fr_tables"
+        app:layout_constraintTop_toBottomOf="@id/fr_tables" />
+
+    <View
+        android:id="@+id/fr_charters_indicator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/fr_charts"
+        app:layout_constraintStart_toStartOf="@id/fr_charts"
+        app:layout_constraintTop_toBottomOf="@id/fr_charts" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fr_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_modem"
-        app:layout_constraintBottom_toTopOf="@id/fr_clear"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/fr_back"
+        app:layout_constraintTop_toBottomOf="@id/fr_tables_indicator"
+        tools:listitem="@layout/item_modem" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/fr_chart"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/fr_back"
+        app:layout_constraintTop_toBottomOf="@id/fr_tables_indicator" />
 
     <Button
-        android:id="@+id/fr_clear"
+        android:id="@+id/fr_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/common_back"
         android:layout_marginHorizontal="8dp"
+        android:text="@string/common_back"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 

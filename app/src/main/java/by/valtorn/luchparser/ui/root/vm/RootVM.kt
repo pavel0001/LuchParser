@@ -4,13 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.valtorn.luchparser.network.model.Message
 import by.valtorn.luchparser.repository.MessagesRepository
 import kotlinx.coroutines.launch
 
 class RootVM : ViewModel() {
 
     val messages = MessagesRepository.messages
+    val datasetCharts = MessagesRepository.datasetCharts
+
+    private val mSelectedOption = MutableLiveData(ResultOption.TABLE)
+    val selectedOption: LiveData<ResultOption> = mSelectedOption
 
     private val mProgress = MutableLiveData(false)
     val progress: LiveData<Boolean> = mProgress
@@ -26,4 +29,13 @@ class RootVM : ViewModel() {
     fun clear() {
         MessagesRepository.clear()
     }
+
+    fun selectOption(option: ResultOption) {
+        mSelectedOption.value = option
+    }
+}
+
+enum class ResultOption {
+    CHARTER,
+    TABLE
 }
