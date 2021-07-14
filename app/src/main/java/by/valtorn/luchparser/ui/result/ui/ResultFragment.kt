@@ -19,16 +19,13 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
     private val binding by viewBinding(FragmentResultBinding::bind)
     private val viewModel by activityViewModels<RootVM>()
 
-    private val adapter = BaseRecyclerAdapter { item, _ ->
-        if (item is MessageItem) {
-            item.message.id?.let {
-                findNavController().navigate(ResultFragmentDirections.toDetails(it))
-            }
-        }
-    }
+    private var modemId = String()
+
+    private val adapter = BaseRecyclerAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        modemId = ResultFragmentArgs.fromBundle(requireArguments()).modemId
         initUI()
         activity?.let {
             initVM(it)
@@ -37,6 +34,10 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
 
     private fun initUI() {
         with(binding) {
+            root.setOnRefreshListener {
+                if (modemId.isNotEmpty())
+                    viewModel.getModem(modemId)
+            }
             frClear.setOnClickListener {
                 viewModel.clear()
             }
@@ -49,6 +50,7 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
             frRecycler.adapter = adapter
 
             viewModel.messages.observe(viewLifecycleOwner) { modemList ->
+                frRefreshLayot.isRefreshing = false
                 if (modemList == null) {
                     findNavController().popBackStack()
                 } else {

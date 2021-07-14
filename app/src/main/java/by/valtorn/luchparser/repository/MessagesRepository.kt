@@ -14,14 +14,6 @@ object MessagesRepository {
         mMessages.value = NetworkService.getModemData(id)
     }
 
-    fun getMessageWithId(id: String): Message? {
-        return messages.value?.let {
-            it.firstOrNull { message ->
-                message.id == id
-            }
-        }
-    }
-
     fun clear() {
         mMessages.value = null
     }

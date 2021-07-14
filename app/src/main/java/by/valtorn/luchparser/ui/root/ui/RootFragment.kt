@@ -37,9 +37,12 @@ class RootFragment : Fragment(R.layout.fragment_root) {
 
     private fun initUI(activity: FragmentActivity) {
         with(binding) {
+            //frNumberText.setText("794B0007")
             frEnter.setOnClickListener {
                 if (!frNumberText.text.isNullOrBlank() && frNumberText.text.toString().length == 8) {
-                    viewModel.getModem(frNumberText.text.toString().toUpperCase(Locale.getDefault()))
+                    viewModel.getModem(
+                        frNumberText.text.toString().toUpperCase(Locale.getDefault())
+                    )
                 } else {
                     frNumberText.error = getString(R.string.root_error_number)
                 }
@@ -53,9 +56,14 @@ class RootFragment : Fragment(R.layout.fragment_root) {
             viewModel.messages.observe(viewLifecycleOwner) { modem ->
                 modem?.let {
                     if (it.isNotEmpty()) {
-                        findNavController().navigate(RootFragmentDirections.toResultFragment())
+                        findNavController().navigate(
+                            RootFragmentDirections.toResultFragment(
+                                frNumberText.text.toString().toUpperCase(Locale.getDefault())
+                            )
+                        )
                     } else {
-                        Toast.makeText(activity, R.string.root_message_empty, Toast.LENGTH_LONG).show()
+                        Toast.makeText(activity, R.string.root_message_empty, Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
             }

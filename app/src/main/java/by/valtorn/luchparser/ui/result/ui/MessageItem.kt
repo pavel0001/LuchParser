@@ -8,18 +8,23 @@ import by.valtorn.luchparser.network.model.Message
 import by.valtorn.luchparser.utils.BaseListItem
 import by.valtorn.luchparser.utils.backTimeToNormalTime
 
-class MessageItem(private val context: Context, val message: Message) : BaseListItem {
+class MessageItem(private val context: Context, private val message: Message) : BaseListItem {
 
     override fun getViewId() = R.layout.item_modem
 
     override fun renderView(view: View, positionInAdapter: Int) {
         with(ItemModemBinding.bind(view)) {
             imId.text = context.getString(R.string.modem_id, message.id)
-            imTime.text = context.getString(R.string.modem_time, message.timePublished.orEmpty().backTimeToNormalTime())
+            imTime.text = context.getString(
+                R.string.modem_time,
+                message.timePublished.orEmpty().backTimeToNormalTime()
+            )
             message.decodedPayload?.toPayload()?.let {
                 imPayloadPower.text = context.getString(R.string.modem_payload_power, it.batteryPow)
-                imPayloadDistance.text = context.getString(R.string.modem_payload_distance, it.distance)
-                imPayloadTemperature.text = context.getString(R.string.modem_payload_temperature, it.temperature)
+                imPayloadDistance.text =
+                    context.getString(R.string.modem_payload_distance, it.distance)
+                imPayloadTemperature.text =
+                    context.getString(R.string.modem_payload_temperature, it.temperature.toFloat())
             }
         }
     }
