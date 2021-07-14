@@ -22,11 +22,6 @@ class RootVM : ViewModel() {
         }
     }
 
-    fun refresh(id: String) {
-        MessagesRepository.clear()
-        getModem(id)
-    }
-
     fun clear() {
         MessagesRepository.clear()
     }

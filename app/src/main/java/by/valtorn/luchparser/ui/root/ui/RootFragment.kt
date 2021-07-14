@@ -15,7 +15,6 @@ import by.valtorn.luchparser.R
 import by.valtorn.luchparser.databinding.FragmentRootBinding
 import by.valtorn.luchparser.ui.root.vm.RootVM
 import by.valtorn.luchparser.utils.viewBinding
-import timber.log.Timber
 import java.util.*
 
 fun Context.hideKeyboard(view: View) {
@@ -55,7 +54,6 @@ class RootFragment : Fragment(R.layout.fragment_root) {
     private fun initVM(activity: FragmentActivity) {
         with(binding) {
             viewModel.messages.observe(viewLifecycleOwner) { modem ->
-                Timber.i("modemlist ${modem.toString()}")
                 modem?.let {
                     if (it.isNotEmpty()) {
                         findNavController().navigate(
