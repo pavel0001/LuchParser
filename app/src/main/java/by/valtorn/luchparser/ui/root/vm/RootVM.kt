@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.valtorn.luchparser.network.model.Message
 import by.valtorn.luchparser.repository.MessagesRepository
 import kotlinx.coroutines.launch
 
@@ -21,6 +20,11 @@ class RootVM : ViewModel() {
             MessagesRepository.getModem(id)
             mProgress.value = false
         }
+    }
+
+    fun refresh(id: String) {
+        MessagesRepository.clear()
+        getModem(id)
     }
 
     fun clear() {
